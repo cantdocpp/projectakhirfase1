@@ -12,13 +12,13 @@ router.get('/seller', (req, res) => {
 })
 
 router.post('/seller', (req, res) => {
-  Model.Seller.create()
-  .then({
+  Model.Seller.create({
     email: req.body.email,
     password: req.body.password
   })
-  .catch()
-  res.send('registrasi sukses')
+  .then(function() {
+    res.redirect('/')
+  })
 })
 
 module.exports = router;
