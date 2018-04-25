@@ -24,7 +24,7 @@ router.post('/seller', (req, res) => {
     }
   })
   .catch(err => {
-a    res.redirect('/login/seller')
+    res.redirect('/login/seller')
   })
 })
 
