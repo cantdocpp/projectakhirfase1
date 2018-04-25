@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "postgre",
-    "password": 123456,
+    "username": "postgres",
+    "password": "postgres",
     "database": "kopi_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
