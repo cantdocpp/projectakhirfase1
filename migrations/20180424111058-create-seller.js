@@ -17,13 +17,18 @@ module.exports = {
       telp: {
         type: Sequelize.STRING
       },
-      createdAt: {
+            createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
       }
     });
   },
