@@ -21,4 +21,19 @@ router.post('/seller', (req, res) => {
   })
 })
 
+router.get('/user', (req, res) => {
+  res.render('../views/registeruser');
+})
+
+router.post('/user', (req, res) => {
+  Model.User.create()
+  .then(function(){
+    email: req.body.email,
+    password: req.body.password
+  })
+  res.send('registrasi sukses')
+})
+
+
+
 module.exports = router;
