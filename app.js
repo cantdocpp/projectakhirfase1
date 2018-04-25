@@ -15,5 +15,9 @@ app.use('/', routerIndex);
 var routerLogin = require('./routes/login');
 app.use('/login', routerLogin);
 
+//register
+var routerregister = require('./routes/register');
+app.use('/register', routerregister);
+
 
 app.listen(3000, () => console.log('app is listening on port 3000!'))
