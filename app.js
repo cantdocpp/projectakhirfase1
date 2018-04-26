@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session')
-const authMiddleware = require('./middlewares/authMiddleware');
+//const authMiddleware = require('./middlewares/authMiddleware');
 
 app.set('view engine', 'ejs');
 
@@ -24,7 +24,10 @@ app.use('/register', routerregister);
 var routerLogin = require('./routes/login');
 app.use('/login', routerLogin);
 
-app.use('/', authMiddleware)
+var homeRouter=require('./routes/home')
+app.use('/home',homeRouter)
+
+//app.use('/', authMiddleware)
 
 //router index
 var routerIndex = require('./routes');
