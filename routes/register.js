@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
         Status: req.body.Status
       })
       .then(function(){
+        console.log('register user');
         res.redirect('/')
       })
     }

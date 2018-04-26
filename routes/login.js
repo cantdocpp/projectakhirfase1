@@ -17,21 +17,43 @@ router.post('/seller', (req, res) => {
     where: {email: req.body.email}
   })
   .then(dataSeller => {
-    var password = dataSeller.password
+    let password = dataSeller.password;
     if (bcrypt.compareSync(req.body.password, password)) {
-      req.session.email = dataSeller.email
-      res.redirect('/home')
-    } else {
-      res.redirect('/login/seller')
+      req.session.email = dataSeller.email;
+      req.session.idSeller = dataSeller.id;
+      if(dataSeller.name === 0) {
+        res.redirect('/completionform')
+      } else {
+        res.redirect('/home')
+      }
     }
-  })
-  .catch(err => {
-    res.send('error')
   })
 })
 
 router.get('/user', (req, res) => {
   res.render('../views/login/loginUser')
+})
+
+router.post('/user', (req, res) => {
+  Model.User.findOne({
+    where: {email: req.body.email}
+  })
+  .then(dataUser => {
+    console.log('_______________________', dataUser);
+    var password = dataUser.password;
+    if (bcrypt.compareSync(req.body.password, password)) {
+      req.session.email = dataUser.email
+      req.session.nomorId = dataUser.id;
+      if (dataUser.name === null) {
+        res.redirect('/completionform');
+      } else {
+        res.redirect('/home')
+      }
+    }
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
 })
 
 // router.use('/', isLoggedIn)
