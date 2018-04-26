@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   seller_coffee.associate = function(models) {
     // associations can be defined here
+    seller_coffee.belongsTo(models.Seller)
+    seller_coffee.belongsTo(models.Coffee)
   };
   return seller_coffee;
 };

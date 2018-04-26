@@ -20,13 +20,24 @@ router.post('/seller', (req, res) => {
     var password = dataSeller.password
     if (bcrypt.compareSync(req.body.password, password)) {
       req.session.email = dataSeller.email
-      res.redirect('/home')
+      Model.Seller.findOne({
+        where: {email: req.body.email}
+      })
+      .then(seller=>{
+        //console.log(seller);
+        if(seller.name==null||seller.address==null||seller.telp==null){
+          res.render ('../views/completionform',{seller})
+        }else{
+          res.redirect('/home')
+        }
+      })
+
     } else {
       res.redirect('/login/seller')
     }
   })
   .catch(err => {
-    res.send('error')
+    res.send(err)
   })
 })
 
