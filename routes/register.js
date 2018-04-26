@@ -22,8 +22,7 @@ router.post('/', (req, res) => {
       .then(function() {
         res.redirect('/')
       })
-    }else{
-
+    } else{
       Model.User.create({
         email: req.body.email,
         password: req.body.password,
