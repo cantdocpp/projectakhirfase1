@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session')
-//const authMiddleware = require('./middlewares/authMiddleware');
+const authMiddleware = require('./middlewares/authMiddleware');
 
 app.set('view engine', 'ejs');
 
@@ -27,6 +27,9 @@ app.use('/login', authMiddleware, routerLogin);
 //router index
 var routerIndex = require('./routes');
 app.use('/', routerIndex);
+
+var routesHome =require('./routes/home')
+app.use('/',routesHome  )
 
 
 app.listen(3000, () => console.log('app is listening on port 3000!'))
