@@ -5,4 +5,8 @@ router.get('/', (req, res) => {
   res.render('../views/home')
 })
 
+router.get('/logout', (req, res) => {
+
+})
+
 module.exports = router
