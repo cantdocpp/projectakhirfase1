@@ -18,19 +18,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 //register
 var routerregister = require('./routes/register');
-app.use('/register', routerregister);
+app.use('/register', authMiddleware, routerregister);
 
 //router login
 var routerLogin = require('./routes/login');
-app.use('/login', routerLogin);
-
-var homeRouter=require('./routes/home')
-app.use('/home',homeRouter)
-
-//app.use('/', authMiddleware)
+app.use('/login', authMiddleware, routerLogin);
 
 //router index
 var routerIndex = require('./routes');
 app.use('/', routerIndex);
+
 
 app.listen(3000, () => console.log('app is listening on port 3000!'))
