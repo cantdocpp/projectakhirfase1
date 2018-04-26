@@ -4,7 +4,7 @@ var Model = require('../models')
 var bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
-  //console.log(req.session.email);
+  console.log(req.session.email);
   res.render('../views/login/login');
 })
 
@@ -26,6 +26,7 @@ router.post('/seller', (req, res) => {
     }
   })
   .catch(err => {
+    res.send('error')
   })
 })
 
