@@ -4,7 +4,7 @@ var Model = require('../models')
 
 
 router.get('/', (req, res) => {
-  res.render('../views/register');
+  res.render('../views/register/register');
 })
 
 // router.get('/seller', (req, res) => {
@@ -35,19 +35,7 @@ router.post('/', (req, res) => {
     }
 })
 
-// router.get('/user', (req, res) => {
-//   res.render('../views/registeruser');
-// })
-//
-// router.post('/user',(req,res)=>{
-//   Model.User.Create({
-//     email: req.body.email,
-//     password: req.body.password
-//   })
-//   .then(function(){
-//     res.redirect('/')
-//   })
-// })
+
 
 
 module.exports = router;

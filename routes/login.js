@@ -4,12 +4,12 @@ var Model = require('../models')
 var bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
-  console.log(req.session.email);
-  res.render('../views/login');
+  //console.log(req.session.email);
+  res.render('../views/login/login');
 })
 
 router.get('/seller', (req, res) => {
-  res.render('../views/loginSeller');
+  res.render('../views/login/loginSeller');
 })
 
 router.post('/seller', (req, res) => {
@@ -20,7 +20,7 @@ router.post('/seller', (req, res) => {
     var password = dataSeller.password
     if (bcrypt.compareSync(req.body.password, password)) {
       req.session.email = dataSeller.email
-      res.send('sukses login')
+      res.redirect('/home')
     } else {
       res.redirect('/login/seller')
     }
@@ -30,7 +30,7 @@ router.post('/seller', (req, res) => {
 })
 
 router.get('/user', (req, res) => {
-  res.render('../views/loginUser')
+  res.render('../views/login/loginUser')
 })
 
 // router.use('/', isLoggedIn)
