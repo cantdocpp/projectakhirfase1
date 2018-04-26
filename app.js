@@ -23,6 +23,10 @@ app.use('/register', authMiddleware, routerRegister);
 //router login
 var routerLogin = require('./routes/login');
 app.use('/login', authMiddleware, routerLogin);
+//
+//completitionForm
+var routerform = require('./routes/completionform');
+app.use('/completionform', routerform);
 
 //router index
 var routerIndex = require('./routes');

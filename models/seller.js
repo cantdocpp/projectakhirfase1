@@ -9,10 +9,15 @@ module.exports = (sequelize, DataTypes) => {
     telp: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    Status:DataTypes.STRING
+    Status:DataTypes.STRING,
+    CoffeeId:DataTypes.INTEGER
   }, {});
   Seller.associate = function(models) {
     // associations can be defined here
+    Seller.belongsToMany(models.Coffee, {
+      through: models.seller_coffee
+    })
+    Seller.hasMany(models.seller_coffee)
   };
 
   Seller.hook('beforeSave', (user, options) => {
